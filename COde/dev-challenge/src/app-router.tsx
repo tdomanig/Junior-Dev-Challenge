@@ -14,7 +14,6 @@ export const AppRouter = () => {
             </Layout>
           }
         ></Route>
-        <Route path="/results" element={<GiphyResult />}></Route>
       </Routes>
     </BrowserRouter>
   );

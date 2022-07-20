@@ -1,14 +1,27 @@
 import { FC, ReactNode } from "react";
-import { GiphyRandom } from "../features/giphyRandom/giphyRandom";
-import { GiphySearch } from "../features/giphySearch/giphySearch";
+import { Header } from "./head";
+import { GiphySearchForm } from "../features/giphySearch/giphySearch";
+import { QueryClient, QueryClientProvider } from "react-query";
+
 type LayoutProps = {
   children: ReactNode;
 };
+
+const queryClient1 = new QueryClient();
+const queryClient2 = new QueryClient();
 export const Layout: FC<LayoutProps> = () => {
   return (
     <div>
-      <GiphyRandom></GiphyRandom>
-      <GiphySearch></GiphySearch>
+      <div>
+        <QueryClientProvider client={queryClient1}>
+          <Header></Header>
+        </QueryClientProvider>
+      </div>
+      <div>
+        <QueryClientProvider client={queryClient2}>
+          <GiphySearchForm></GiphySearchForm>
+        </QueryClientProvider>
+      </div>
     </div>
   );
 };
