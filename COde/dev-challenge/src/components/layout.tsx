@@ -1,8 +1,13 @@
 import { FC, ReactNode } from "react";
-import { GiphySearch } from "../features/giphySearch/giphySearch";
+import { GiphyRandom } from "../features/giphyRandom/giphyRandom";
+import { GiphyResult } from "../features/giphyresult/giphyResult";
 type LayoutProps = {
   children: ReactNode;
 };
 export const Layout: FC<LayoutProps> = () => {
-  return <GiphySearch />;
+  return (
+    <div>
+      <GiphyRandom></GiphyRandom>
+    </div>
+  );
 };
