@@ -9,10 +9,18 @@ export const GiphyResult = () => {
   }
   console.log(data);
   return data ? (
-    <div>
+    <div className="grid grid-cols-3 w-screen">
       {data.map((result: any) => {
         console.log(result.images.original.mp4);
-        return <img className="m-3" src={result.images.original.url}></img>;
+        return (
+          <div className=" flex  items-center">
+            <img
+              className="m-3 h-[300px] w-[300px] "
+              src={result.images.original.url}
+              alt={result.title}
+            ></img>
+          </div>
+        );
       })}
     </div>
   ) : (
