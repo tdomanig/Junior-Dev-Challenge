@@ -7,6 +7,7 @@ export const GiphyResult = (inputValues: any) => {
     inputValues.test.searchterm,
     inputValues.test.Gifquanity
   );
+  const ids = JSON.parse(localStorage.ids);
 
   if (isLoading) {
     return <Loader />;
@@ -18,6 +19,23 @@ export const GiphyResult = (inputValues: any) => {
   return data ? (
     <div className="grid grid-cols-3 w-screen lg:grid-cols-2 sm:grid-cols-1">
       {Object.values(data.data).map((result: any, key: any) => {
+        for (const item in ids) {
+          if (result.id === ids[item]) {
+            return (
+              <div key={key} className=" flex flex-col  items-center">
+                <img
+                  className="m-3 mb-0 h-[300px] w-[300px]  "
+                  src={result.images.original.url}
+                  key={key}
+                  alt={data.data.title}
+                ></img>
+                <div className="bg-gray-700 h-[75px] w-[300px] flex text-white">
+                  You already have this in your favorite list
+                </div>
+              </div>
+            );
+          }
+        }
         return (
           <div key={key} className=" flex flex-col  items-center">
             <img
@@ -27,14 +45,20 @@ export const GiphyResult = (inputValues: any) => {
               alt={data.data.title}
             ></img>
             <div className="bg-gray-700 h-[75px] w-[300px] flex">
-              <label className="text-white my-auto mx-4" htmlFor="like">
+              <label className="text-white my-auto mx-4" htmlFor="likeButton">
                 Add to favourites
               </label>
               <button
-                name="like"
+                name="likeButton"
+                id={result.id}
                 className="bg-transparent my-auto mx-4"
                 onClick={() => {
-                  localStorage.setItem("id", result.id);
+                  ids.push(result.id);
+                  localStorage.setItem("ids", JSON.stringify(ids));
+                  const button = document.getElementById(result.id);
+                  if (button !== null) {
+                    button.style.display = "none";
+                  }
                 }}
               >
                 <LikeICon />
