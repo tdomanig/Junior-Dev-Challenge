@@ -13,7 +13,7 @@ export const GiphySearchForm = () => {
   const onSubmit: SubmitHandler<Input> = (data) => {
     setInput(data);
   };
-
+  console.log(process.env);
   return (
     <div className="flex flex-col items-center">
       <form

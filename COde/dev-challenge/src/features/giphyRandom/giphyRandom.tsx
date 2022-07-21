@@ -1,5 +1,6 @@
 import { useRandomGif } from "../../components/hooks/use-show-random";
 import { Loader } from "@mantine/core";
+import headerLogo from "../../components/logos/header-logo.gif";
 
 export const GiphyRandom = () => {
   const { data, isLoading, error, isError } = useRandomGif();
@@ -8,8 +9,12 @@ export const GiphyRandom = () => {
   }
   return data ? (
     <div className="flex flex-col items-center">
-      <div className="bg-black h-[100px] w-screen mb-3 text-center">
-        <h1 className="text-white mt-5 text-lg">Giphy Search APP</h1>
+      <div className="bg-black h-[100px] flex justify-center w-screen mb-3 text-center">
+        <img
+          className="my-auto w-[500px]"
+          src={headerLogo}
+          alt="Header-Logo"
+        ></img>
       </div>
       <img
         className="h-[300px] w-[300px] mx-auto"

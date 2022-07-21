@@ -10,7 +10,7 @@ export const useFavourite = () => {
     idsString += ids[key] + ",";
   }
 
-  const baseURl = `https://api.giphy.com/v1/gifs?api_key=vf7nDm11F3X2Pe63jIGjWWPiFCFCZXM8&ids=${idsString}`;
+  const baseURl = `https://api.giphy.com/v1/gifs?api_key=${process.env.REACT_APP_OMDB_API_KEY}&ids=${idsString}`;
   return useQuery({
     queryKey: [JSON.parse(localStorage.ids)],
     queryFn: async () => {
