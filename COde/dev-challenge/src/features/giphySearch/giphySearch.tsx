@@ -9,7 +9,7 @@ export type Input = {
 
 export const GiphySearchForm = () => {
   const { register, handleSubmit } = useForm<Input>();
-  const [input, setInput] = useState({});
+  const [input, setInput] = useState<Input>({ searchterm: "", Gifquanity: "" });
   const onSubmit: SubmitHandler<Input> = (data) => {
     setInput(data);
   };
@@ -57,7 +57,10 @@ export const GiphySearchForm = () => {
         </label>
       </form>
       <div>
-        <GiphyResult test={input}></GiphyResult>
+        <GiphyResult
+          searchterm={input.searchterm}
+          Gifquanity={input.Gifquanity}
+        ></GiphyResult>
       </div>
     </div>
   );

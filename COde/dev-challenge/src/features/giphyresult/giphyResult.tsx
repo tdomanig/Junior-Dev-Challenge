@@ -1,14 +1,11 @@
 import { useSearchGif } from "../../components/hooks/use-search-gif";
 import { Loader } from "@mantine/core";
 import { LikeICon } from "../../components/likeicon";
-
-export const GiphyResult = (inputValues: any) => {
-  const { data, isLoading } = useSearchGif(
-    inputValues.test.searchterm,
-    inputValues.test.Gifquanity
-  );
+import { Input } from "../giphySearch/giphySearch";
+export const GiphyResult = ({ searchterm, Gifquanity }: Input) => {
+  const { data, isLoading } = useSearchGif(searchterm, Gifquanity);
   const ids = JSON.parse(localStorage.ids);
-
+  let iconColor: string = "";
   if (isLoading) {
     return <Loader />;
   }
@@ -57,11 +54,11 @@ export const GiphyResult = (inputValues: any) => {
                   localStorage.setItem("ids", JSON.stringify(ids));
                   const button = document.getElementById(result.id);
                   if (button !== null) {
-                    button.style.display = "none";
+                    iconColor = "#0E991E";
                   }
                 }}
               >
-                <LikeICon />
+                <LikeICon style="#0E991E" />
               </button>
             </div>
           </div>
