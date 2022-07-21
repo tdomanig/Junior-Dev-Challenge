@@ -6,7 +6,9 @@ module.exports = {
       lg:{'max':'1000px'},
       sm:{'max':'650px'}
     },
-    extend: {},
+    extend: {
+   
+    },
   },
   plugins: [],
 }

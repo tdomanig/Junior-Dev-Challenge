@@ -2,6 +2,7 @@ import { FC, ReactNode } from "react";
 import { Header } from "./head";
 import { GiphySearchForm } from "../features/giphySearch/giphySearch";
 import { QueryClient, QueryClientProvider } from "react-query";
+import { GiphyRandom } from "../features/giphyRandom/giphyRandom";
 
 type LayoutProps = {
   children: ReactNode;
@@ -15,6 +16,7 @@ export const Layout: FC<LayoutProps> = () => {
       <div>
         <QueryClientProvider client={queryClient1}>
           <Header></Header>
+          <GiphyRandom></GiphyRandom>
         </QueryClientProvider>
       </div>
       <div>

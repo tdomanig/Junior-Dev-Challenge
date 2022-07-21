@@ -20,38 +20,41 @@ export const GiphySearchForm = () => {
         className="flex flex-col items-center"
         onSubmit={handleSubmit(onSubmit)}
       >
-        <input
-          className="border border-gray-500 ml-3 my-3 rounded-full p-2"
-          placeholder="Search..."
-          {...register("searchterm", { required: true })}
-        ></input>
+        <div>
+          <input
+            className=" ml-3 my-3 rounded-l-full p-2"
+            placeholder="Search..."
+            {...register("searchterm", { required: true })}
+          ></input>
+          <input
+            className="h-[40px] w-[120px] rounded-r-full bg-emerald-400 hover:bg-emerald-600  my-3 "
+            type="submit"
+            value="Search"
+          ></input>
+        </div>
+
         <label className=" my-3 flex mx-auto " htmlFor="Gif-quanity">
           <select
             className="w-[75px] h-7 rounded-full text-center text-md"
             {...register("Gifquanity")}
           >
-            <option className="bg-gray-500 text-md hover" value="3">
+            <option className="dropdownItems" value="3">
               3
             </option>
-            <option className="bg-gray-500 text-md" value="6">
+            <option className="dropdownItems " value="6">
               6
             </option>
-            <option className="bg-gray-500 text-md" value="9">
+            <option className="dropdownItems " value="9">
               9
             </option>
-            <option className="bg-gray-500 text-md" value="12">
+            <option className="dropdownItems " value="12">
               12
             </option>
-            <option className="bg-gray-500 text-md" value="15">
+            <option className="dropdownItems" value="15">
               15
             </option>
           </select>
         </label>
-        <input
-          className="h-[35px] w-[120px] rounded-md border  border-black bg-white  my-3 hover:translate-y-3 hover:border-collapse "
-          type="submit"
-          value="Search"
-        ></input>
       </form>
       <div>
         <GiphyResult test={input}></GiphyResult>
