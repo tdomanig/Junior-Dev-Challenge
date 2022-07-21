@@ -1,3 +1,12 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+    body{
+        @apply bg-gradient-to-l from-gray-400 to-gray-800
+    }
+}
+.borderAnimation{
+    @apply  border-4 flex justify-center items-center w-[300px] h-[300px] uppercase text-white bg-black 
+}
