@@ -6,6 +6,7 @@ export const GiphyRandom = () => {
   if (isLoading) {
     return <Loader />;
   }
+
   return data ? (
     <div className="flex flex-col items-center">
       <img

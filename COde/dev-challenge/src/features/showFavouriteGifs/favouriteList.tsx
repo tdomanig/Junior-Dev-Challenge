@@ -5,7 +5,6 @@ import { Link } from "react-router-dom";
 export const FavouriteList = () => {
   const { data, isLoading } = useFavourite();
 
-  console.log(data);
   if (isLoading) {
     return (
       <div className="h-screen w-screen flex flex-col justify-center items-center ">
@@ -29,14 +28,14 @@ export const FavouriteList = () => {
   return data ? (
     <div>
       <div className="grid grid-cols-3 w-screen lg:grid-cols-2 sm:grid-cols-1">
-        {Object.values(data.data).map((result: any, key: any) => {
+        {Object.values(data).map((result: any, key: any) => {
           return (
             <div key={key} className=" flex flex-col  items-center">
               <img
                 className="m-3 mb-0 h-[300px] w-[300px]  "
                 src={result.images.original.url}
                 key={key}
-                alt={data.data.title}
+                alt={result.title}
               ></img>
               <div className="bg-black w-[300px] flex justify-center h-[75px]">
                 <button
@@ -46,7 +45,7 @@ export const FavouriteList = () => {
                       if (result.id === ids[key] || ids[key] === null) {
                         ids.splice(key, 1);
                       }
-                      console.log(ids);
+
                       localStorage.removeItem("ids");
                     }
                     localStorage.setItem("ids", JSON.stringify(ids));

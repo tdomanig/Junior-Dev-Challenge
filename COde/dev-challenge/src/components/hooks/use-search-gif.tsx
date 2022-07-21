@@ -1,6 +1,18 @@
 import { useQuery } from "react-query";
-
 import axios from "axios";
+
+export type giphyResultType = {
+  data: {
+    id: string;
+    title: string;
+    length: number;
+    images: {
+      orignal: {
+        url: string;
+      };
+    };
+  };
+};
 
 export const useSearchGif = (searchterm: string, qty: string) => {
   const baseURl = `https://api.giphy.com/v1/gifs/search?api_key=${
@@ -13,7 +25,7 @@ export const useSearchGif = (searchterm: string, qty: string) => {
     queryFn: async () => {
       const response = await axios.get(baseURl);
 
-      return response.data;
+      return response.data.data as giphyResultType;
     },
   });
 };

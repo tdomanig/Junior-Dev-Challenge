@@ -1,9 +1,21 @@
 import { useQuery } from "react-query";
 
 import axios from "axios";
+export type giphyResultType = {
+  data: {
+    id: string;
+    title: string;
+    length: number;
+    images: {
+      orignal: {
+        url: string;
+      };
+    };
+  };
+};
 
 export const useFavourite = () => {
-  const ids = JSON.parse(localStorage.ids);
+  const ids: string[] = JSON.parse(localStorage.ids);
 
   let idsString: string = "";
   for (const key in ids) {
@@ -15,7 +27,7 @@ export const useFavourite = () => {
     queryKey: [JSON.parse(localStorage.ids)],
     queryFn: async () => {
       const response = await axios.get(baseURl);
-      return response.data;
+      return response.data.data as giphyResultType;
     },
   });
 };
