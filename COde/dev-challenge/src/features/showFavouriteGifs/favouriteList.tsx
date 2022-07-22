@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 export const FavouriteList = () => {
   const { data, isLoading } = useFavourite();
-
+  let ids: any = [];
   if (isLoading) {
     return (
       <div className="h-screen w-screen flex flex-col justify-center items-center ">
@@ -24,7 +24,12 @@ export const FavouriteList = () => {
       </div>
     );
   }
-  const ids = JSON.parse(localStorage.ids);
+  try {
+    ids = JSON.parse(localStorage.ids);
+  } catch (e) {
+    console.log(e);
+  }
+
   return data ? (
     <div>
       <div className="grid grid-cols-3 w-screen lg:grid-cols-2 sm:grid-cols-1">
@@ -52,7 +57,16 @@ export const FavouriteList = () => {
                     window.location.reload();
                   }}
                 >
-                  Delete
+                  <svg
+                    className="bg-black my-auto"
+                    xmlns="http://www.w3.org/2000/svg"
+                    height="48"
+                    width="48"
+                  >
+                    <g fill="#BF1D11">
+                      <path d="M13.05 42q-1.2 0-2.1-.9-.9-.9-.9-2.1V10.5H8v-3h9.4V6h13.2v1.5H40v3h-2.05V39q0 1.2-.9 2.1-.9.9-2.1.9Zm21.9-31.5h-21.9V39h21.9Zm-16.6 24.2h3V14.75h-3Zm8.3 0h3V14.75h-3Zm-13.6-24.2V39Z" />
+                    </g>
+                  </svg>
                 </button>
               </div>
             </div>

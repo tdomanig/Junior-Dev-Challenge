@@ -3,6 +3,7 @@ import { Header } from "./head";
 import { GiphySearchForm } from "../features/giphySearch/giphySearch";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { GiphyRandom } from "../features/giphyRandom/giphyRandom";
+import { Footer } from "./footer";
 
 type LayoutProps = {
   children: ReactNode;
@@ -24,6 +25,7 @@ export const Layout: FC<LayoutProps> = () => {
           <GiphySearchForm></GiphySearchForm>
         </QueryClientProvider>
       </div>
+      <Footer />
     </div>
   );
 };
