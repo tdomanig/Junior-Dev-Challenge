@@ -30,8 +30,10 @@ export const GiphyResult = ({ searchterm, Gifquanity }: Input) => {
                   key={key}
                   alt={result.title}
                 ></img>
-                <div className="bg-gray-700 h-[75px] w-[300px] flex text-white">
-                  You already have this in your favorite list
+                <div className="bg-gray-700 h-[75px] w-[300px] flex text-white text-center">
+                  <p className="my-auto">
+                    You already have this in your favorite list
+                  </p>
                 </div>
               </div>
             );
